@@ -1,31 +1,23 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
-        <td><%= post.image %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="container">
+  <% @posts.each do |post| %>
+    <div class="card d-flex flex-row" style="width: 100%; height: 300px; padding: 10px;">
+      <img src="<%= post.image %>" class="card-img-top" style="width: 40%; height: 280px; object-fit: cover;" alt="<% post.title %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text"><%= link_to post.content[...50], post %></p>
+        <%= link_to 'Read more', post, class: "btn btn-primary" %>
+        <% if admin_signed_in? %>
+          <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<% if admin_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>

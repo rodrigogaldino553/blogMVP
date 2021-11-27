@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  # add skip_devise
+  skip_before_action :authenticate_admin!, only: [:show, :index]
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json

@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+30.times do
+  Post.create!([{
+    title: Faker::Educator.course_name,
+    content: Faker::TvShows::BigBangTheory.quote,
+    image: Faker::LoremFlickr.image(size: "400x400", search_terms: ['sports'])
+  }])
+end

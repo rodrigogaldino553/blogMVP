@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
   validates :title, presence: true
-  validates :content, presence: true, length: { minimum: 50 }
+  validates :content, presence: true
   validates :image, presence: true
 end

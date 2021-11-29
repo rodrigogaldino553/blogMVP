@@ -17,7 +17,8 @@
 
 <p>
   <strong>Comments</strong> 
-  <%= render @post.comments %> 
+  <%= render @post.comments.order(id: :desc) %>
+  <%= render partial: 'comments/form', locals: { post: @post } %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

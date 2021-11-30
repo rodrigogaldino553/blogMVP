@@ -16,7 +16,7 @@
 </p>
 
 <p>
-  <strong>Comments</strong> 
+  <strong>Comments (<%= @posts.comments.count %>)</strong> 
   <%= render @post.comments.order(id: :desc) %>
   <%= render partial: 'comments/form', locals: { post: @post } %>
 </p>

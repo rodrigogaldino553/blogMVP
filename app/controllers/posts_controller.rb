@@ -52,6 +52,8 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
+    comments = Comment.where(post_id: @post.id) # select comments that is from the current post
+    comments.destroy_all
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }

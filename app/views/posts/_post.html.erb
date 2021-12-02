@@ -11,7 +11,7 @@
       <% end %>
     </div>
     <div class="card-footer">
-      <p>posted in: <%= time_ago_in_words(post.created_at) %> ago</p>
+      <p>posted in: <%= time_ago_in_words(post.created_at) %> ago / Wiritten by: <%= post.admin.email %></p>
     </div>
   </div>
 </div>

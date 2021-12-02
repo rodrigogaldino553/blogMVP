@@ -13,14 +13,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :first_name, class:"form-control my-2", placeholder:"Primeiro nome *", autofocus: true, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.text_field :last_name, class:"form-control my-2", placeholder:"Ultimo nome *", autofocus: true, autocomplete: "last_name" %>
-  </div>
-
-  <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>

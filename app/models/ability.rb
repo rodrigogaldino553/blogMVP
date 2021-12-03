@@ -7,7 +7,7 @@ class Ability
       can %i[read], Post
       can :read, Comment
     elsif user.admin?
-      can :manage, Post, Comment
+      can :manage, :all
     elsif !user.admin?
       can %i[read], Post
       can :manage, Comment

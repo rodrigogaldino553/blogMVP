@@ -8,6 +8,6 @@
 </div>
 <%= paginate @posts %>
 <br>
-<% if admin_signed_in? %>
+<% if can? :create, @posts %>
   <%= link_to 'New Post', new_post_path %>
 <% end %>

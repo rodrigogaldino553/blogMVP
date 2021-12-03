@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def create
     # create a comment
     # for the post from the current admin
-    @comment = current_admin.comments.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
     if !@comment.save
       flash[:notice] = @comment.errors.full_messages.to_sentence
     end
@@ -16,6 +16,6 @@ class CommentsController < ApplicationController
     params
       .require(:comment)
       .permit(:content)
-      .merge(post_id: params[:post_id])
+      .merge(post_id: params[:post_id], user_id: params[:user_id])
   end
 end

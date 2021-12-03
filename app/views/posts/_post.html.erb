@@ -5,13 +5,13 @@
       <h5 class="card-title"><%= post.title %></h5>
       <p class="card-text"><%= link_to post.content[...50], post %></p>
       <%= link_to 'Read more', post, class: "btn btn-primary" %>
-      <% if admin_signed_in? %>
+      <% if can? :edit, :destroy, Post %>
         <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       <% end %>
     </div>
     <div class="card-footer">
-      <p>posted in: <%= time_ago_in_words(post.created_at) %> ago / Wiritten by: <%= post.admin.email %></p>
+      <p>posted in: <%= time_ago_in_words(post.created_at) %> ago / Wiritten by: <%= post.user.email %></p>
     </div>
   </div>
 </div>

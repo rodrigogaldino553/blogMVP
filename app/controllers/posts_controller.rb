@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   # add skip_devise
-  skip_before_action :authenticate_admin!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_post, only: %i[ edit update destroy ]
 
   # GET /posts or /posts.json
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    @post.admin = current_admin
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save

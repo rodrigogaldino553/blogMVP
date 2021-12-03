@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :users
   # resources :posts # add only[%sei la oq%]
   resources :posts, only: %i[index show edit destroy new create update] do
     resources :comments, only: [:create]

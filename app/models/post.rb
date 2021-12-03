@@ -3,6 +3,6 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validates :image, presence: true
 
-  belongs_to :admin
+  belongs_to :user
   has_many :comments, dependent: :destroy
 end

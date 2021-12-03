@@ -17,10 +17,17 @@
 
 
 <p>
-  <strong>Comments (<%= @post.comment_ids.count %>)</strong> 
-  <%= render @post.comments.order(id: :desc) %>
+  <% if @post.comment_ids.count < 1 %>
+    <h4>Be the first to comment here!</h4>
+  <% else %>
+    <strong>Comments (<%= @post.comment_ids.count %>)</strong> 
+    <%= render @post.comments.order(id: :desc) %>
+  <% end %>
   <% if can? :create, Comment %>
     <%= render partial: 'comments/form', locals: { post: @post } %>
+  <% end %>
+  <% unless user_signed_in? %>
+    <%= link_to 'Sign in to comment!', new_user_session_path %>
   <% end %>
 </p>
 

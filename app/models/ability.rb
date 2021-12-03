@@ -5,6 +5,7 @@ class Ability
   def initialize(user)
     if user.nil?
       can %i[read], Post
+      can :read, Comment
     elsif user.admin?
       can :manage, Post, Comment
     elsif !user.admin?

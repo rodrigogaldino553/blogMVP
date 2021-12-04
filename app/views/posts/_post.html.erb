@@ -1,20 +1,20 @@
 <div onclick="window.location.href='<%= post_path(post) %>'" class="card mb-3 text-md" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="<%= post.image %>" class="img-fluid rounded-start" style="object-fit: cover;" alt="<%= post.title %>">
+      <img src="<%= post.image %>" class="img rounded-start" style="object-fit: cover;" alt="<%= post.title %>">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 d-flex flex-column space-between">
       <div class="card-body">
         <h5 class="card-title"><%= post.title %></h5>
         <p class="card-text"><%= post.content[...60] %></p>
-        <p class="card-text">posted in: <%= time_ago_in_words(post.created_at) %> ago / by: <%= post.user.email %></small></p>
       </div>
-      <% if can? :edit, :destroy, Post %>
-        <div class="card-footer">
+      <div class="card-footer">
+        <p class="card-text">posted in: <%= time_ago_in_words(post.created_at) %> ago / by: <%= post.user.email %></small></p>
+        <% if can? :edit, :destroy, Post %>
           <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
           <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

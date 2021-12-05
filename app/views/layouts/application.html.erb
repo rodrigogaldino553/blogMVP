@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
   <head>
     <title>BlogMVP</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,14 +9,16 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>   
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body style="height: 100%;">
     <% if notice %>
       <%= render 'shared/messages' %>
     <% end %>
+    <div class="d-flex flex-column justify-content-between" style="height: 100%;">
     <%= render 'shared/header' %>
     <div class="container">
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

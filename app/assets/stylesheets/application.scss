@@ -18,6 +18,10 @@
  body{
    margin: 0;
  }
+
+ body, p, ol, ul, td{
+   font-size: 16px;
+ }
 /*
  .pagination a, .pagination span.current, .pagination span.gap {
   float: left;

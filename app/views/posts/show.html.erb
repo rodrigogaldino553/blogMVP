@@ -12,23 +12,27 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @post.image %>
+  <img src="<%= @post.image %>" style="width: 200px; height: 150px;" alt="<%= @post.image %>">
 </p>
 
 
 <p>
-  <% if @post.comment_ids.count < 1 %>
-    <h4>Be the first to comment here!</h4>
-  <% else %>
-    <strong>Comments (<%= @post.comment_ids.count %>)</strong> 
-    <%= render @post.comments.order(id: :desc) %>
-  <% end %>
-  <% if can? :create, Comment %>
-    <%= render partial: 'comments/form', locals: { post: @post } %>
-  <% end %>
-  <% unless user_signed_in? %>
-    <%= link_to 'Sign in to comment!', new_user_session_path %>
-  <% end %>
+  <div>
+    <% if @post.comment_ids.count < 1 %>
+      <h4>Be the first to comment here!</h4>
+    <% else %>
+      <strong>Comments (<%= @post.comment_ids.count %>)</strong>
+    <% end %>
+    <% if can? :create, Comment %>
+      <%= render partial: 'comments/form', locals: { post: @post } %>
+    <% end %>
+    <% unless user_signed_in? %>
+      <%= link_to 'Sign in to comment!', new_user_session_path %>
+    <% end %>
+    <% if @post.comment_ids.count > 0 %> 
+      <%= render @post.comments.order(id: :desc) %>
+    <% end %>
+  </div>
 </p>
 
 

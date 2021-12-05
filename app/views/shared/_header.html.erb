@@ -1,32 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-custom navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-     <%= link_to 'The Blog', root_path, class: "navbar-brand" %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <%= link_to 'The Blog', root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            
-                <% if user_signed_in?  %> # add cancan method here
-                    <li class="nav-item">
-                        <%= link_to "Edit profile", edit_user_registration_path, class:"navbar-brand" %>
-                    </li>
-                    <li class="nav-item">
-                        <%= link_to "Get out", destroy_user_session_path, method: :delete, class:"navbar-brand" %>
-                    </li>
-                <% else %>
-                    <li class="nav-item">
-                        <%= link_to "Sign up", new_user_registration_path, class:"navbar-brand" %>
-                    </li>
-
-                    <li class="nav-item">
-                        <%= link_to "Sign in", new_user_session_path, class:"navbar-brand" %>
-                    </li>
-                <% end %>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <% if user_signed_in?  %>
+          <li class="nav-item">
+            <%= link_to "Edit profile", edit_user_registration_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Get out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_session_path, class:"nav-link" %>
+          </li>
+        <% end %>
       </ul>
       <% if can? :create, @posts %>
-                <%= link_to 'Novo Post', new_post_path, class:"btn btn-outline-light" %>
+        <%= link_to 'New Post', new_post_path, class:"btn btn-outline-light" %>
       <% end %>
     </div>
   </div>

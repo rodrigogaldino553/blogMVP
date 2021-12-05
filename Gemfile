@@ -65,7 +65,7 @@ gem 'devise'
 gem 'cancancan'
 
 # ui
-gem 'kaminari'
+gem 'pagy', '~> 5.6'
 
 # dev
 gem 'faker'

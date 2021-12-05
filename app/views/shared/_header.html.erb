@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <% if user_signed_in?  %>
           <li class="nav-item">
@@ -23,7 +23,7 @@
         <% end %>
       </ul>
       <% if can? :create, @posts %>
-        <%= link_to 'Novo Post', new_post_path, class:"btn btn-outline-light" %>
+        <%= link_to 'New Post', new_post_path, class:"btn btn-outline-light" %>
       <% end %>
     </div>
   </div>

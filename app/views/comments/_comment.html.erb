@@ -1,6 +1,6 @@
 <div class="card w-100 mb-2 mt-2">
   <div class="card-body">
-    <p class="card-title text-muted"><%= comment.user.email %></p>
+    <p class="card-title text-muted"><%= comment.user.email.split(/@/).first %></p>
     <h6 class="card-subtitle mb-3"><%= comment.content %></h6>
     <p class="card-text text-muted">on <%= comment.created_at.strftime("%D") %></p>
   </div>

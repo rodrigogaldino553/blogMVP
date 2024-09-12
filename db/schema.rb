@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_12_042820) do
+ActiveRecord::Schema.define(version: 2024_09_12_043425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,17 @@ ActiveRecord::Schema.define(version: 2024_09_12_042820) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.integer "views_count"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "posts_views", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "subscriber_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_posts_views_on_post_id"
+    t.index ["subscriber_id"], name: "index_posts_views_on_subscriber_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -61,4 +71,6 @@ ActiveRecord::Schema.define(version: 2024_09_12_042820) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "posts_views", "posts"
+  add_foreign_key "posts_views", "subscribers"
 end
